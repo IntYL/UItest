@@ -59,7 +59,7 @@ public class MusicActivity extends AppCompatActivity  {
         });
         try {
             mediaPlayer.reset();
-            mediaPlayer.setDataSource("");
+            mediaPlayer.setDataSource("http://www.y3l.top/img/abc.mp4");
         } catch (IOException e) {
             e.printStackTrace();
         }
