@@ -5,14 +5,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
+    <ImageView
         android:id="@+id/tv_shader"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:scaleType="centerInside"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/bg_shadow_rectangle"
         android:gravity="center"
+        android:src="@drawable/boy_10"
         android:text="你好啊!"
         android:textColor="@android:color/black"
         android:textSize="15sp" />
@@ -48,7 +50,6 @@
         android:layout_height="100dp"
         android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
-
         android:layout_below="@id/tv_shader"
         app:cardCornerRadius="4dp"
         app:cardElevation="4dp">
