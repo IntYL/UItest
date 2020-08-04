@@ -52,6 +52,7 @@
         android:layout_marginStart="10dp"
         android:layout_below="@id/tv_shader"
         app:cardCornerRadius="4dp"
+
         app:cardElevation="4dp">
 
         <TextView

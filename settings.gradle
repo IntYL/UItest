@@ -1,2 +1,2 @@
-include ':app', ':customviewlib', ':jstest', ':designpattern'
+include ':app', ':customviewlib', ':draggertest', ':musicdemo', ':gpsdemo'
 rootProject.name='UItest'
