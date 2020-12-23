@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <dimen name="int_test">25dp</dimen>
+  <dimen name="int_test_1">25dp</dimen>
+
 </resources>

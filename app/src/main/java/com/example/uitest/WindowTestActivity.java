@@ -30,7 +30,7 @@ public class WindowTestActivity extends AppCompatActivity {
         } else {
             winDowBean.setSw(sw2);
         }
-        float intTest = getResources().getDimension(R.dimen.int_test);
+        float intTest = getResources().getDimension(R.dimen.int_test_1);
         winDowBean.setIntTest((int) intTest);
         String str = getResources().getString(R.string.test_str);
         winDowBean.setTestStr(str);
