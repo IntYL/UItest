@@ -3,9 +3,14 @@ package com.example.animationdemo;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.nfc.Tag;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.animation.Animation;
@@ -98,17 +103,46 @@ public class CircleRevealActivity extends Activity {
         ObjectAnimator animator = ObjectAnimator.ofFloat(myView,"translationX",100f);
         animator.setDuration(5000);
         animator.start();
-        ObjectAnimator animator1 = ObjectAnimator.ofFloat(myView,"translationY",100f);
+        final ObjectAnimator animator1 = ObjectAnimator.ofFloat(myView,"translationY",100f);
         animator1.setDuration(5000);
+        animator1.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                /*int y = (int)animation.getAnimatedValue("y");
+                int x = (int)animation.getAnimatedValue("x");
+                Log.w("lala","X:"+x+" Y:"+y);*/
+                float y = myView.getY();
+                float x = myView.getX();
+                Log.w("lala","X:"+x+" Y:"+y);
+            }
+        });
         animator1.start();
+
+
     }
 
     private void translateY(){
+        //这里的transLationX是最终值
         ObjectAnimator animator = ObjectAnimator.ofFloat(myView,"translationX",500f);
         animator.setDuration(5000);
         animator.start();
         ObjectAnimator animator1 = ObjectAnimator.ofFloat(myView,"translationY",500f);
         animator1.setDuration(5000);
+        animator1.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                /*int y = (int)animation.getAnimatedValue("y");
+                int x = (int)animation.getAnimatedValue("x");
+                Log.w("lala","X:"+x+" Y:"+y);*/
+                float y = myView.getY();
+                float x = myView.getX();
+                Log.w("lala","X:"+x+" Y:"+y);
+            }
+        });
         animator1.start();
+    }
+
+    public static void startActivity(Context context, Intent intent){
+        context.startActivity(intent);
     }
 }

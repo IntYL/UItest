@@ -2,13 +2,23 @@ package com.example.uitest;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.method.ArrowKeyMovementMethod;
+import android.text.style.BulletSpan;
+import android.text.style.ImageSpan;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.guide.AnimationGuideBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +34,7 @@ public class GuideActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.guide_view);
-          initGuideRv();
+        initGuideRv();
     }
 
     private void initGuideRv() {
@@ -32,6 +42,11 @@ public class GuideActivity extends AppCompatActivity {
         GuideBean guideBean = new GuideBean();
         guideBean.setName("SpanDemo");
         dataList.add(guideBean);
+
+        AnimationGuideBean  animationGuideBean = new AnimationGuideBean();
+        animationGuideBean.setName("AnimationDemo");
+        dataList.add(animationGuideBean);
+
         GuideAdapter guideAdapter = new GuideAdapter(dataList, this);
         guideRv = findViewById(R.id.guide_rv);
         guideRv.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
