@@ -31,12 +31,12 @@ public class CircleRevealActivity extends Activity {
             public void onClick(View v) {
                 if (reveal){
                     reveal = false;
-                    translateX();
-                   // unreveal();
+                  //  translateX();
+                    unreveal();
                 }else {
                     reveal = true;
-                    //reveal();
-                    translateY();
+                    reveal();
+                    //translateY();
                 }
             }
         });
@@ -55,7 +55,7 @@ public class CircleRevealActivity extends Activity {
             float finalRadius = (float) Math.hypot(cx, cy);
 
             // create the animator for this view (the start radius is zero)
-            Animator anim = ViewAnimationUtils.createCircularReveal(myView, cx, cy, 0f, finalRadius).setDuration(5000);
+            Animator anim = ViewAnimationUtils.createCircularReveal(myView, cx, cy, 0f, finalRadius/2).setDuration(5000);
 
             // make the view visible and start the animation
             myView.setVisibility(View.VISIBLE);
@@ -80,7 +80,7 @@ public class CircleRevealActivity extends Activity {
             float initialRadius = (float) Math.hypot(cx, cy);
 
             // create the animation (the final radius is zero)
-            Animator anim = ViewAnimationUtils.createCircularReveal(myView, cx, cy, initialRadius, 0f).setDuration(5000);
+            Animator anim = ViewAnimationUtils.createCircularReveal(myView, cx, cy, initialRadius, initialRadius/2).setDuration(5000);
 
             // make the view invisible when the animation is done
             anim.addListener(new AnimatorListenerAdapter() {

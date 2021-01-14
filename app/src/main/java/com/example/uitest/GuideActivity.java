@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.guide.AnimationGuideBean;
+import com.example.guide.CanvasGuideBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,9 +44,13 @@ public class GuideActivity extends AppCompatActivity {
         guideBean.setName("SpanDemo");
         dataList.add(guideBean);
 
-        AnimationGuideBean  animationGuideBean = new AnimationGuideBean();
+        AnimationGuideBean animationGuideBean = new AnimationGuideBean();
         animationGuideBean.setName("AnimationDemo");
         dataList.add(animationGuideBean);
+
+        CanvasGuideBean canvasGuideBean = new CanvasGuideBean();
+        canvasGuideBean.setName("CanvasDemo");
+        dataList.add(canvasGuideBean);
 
         GuideAdapter guideAdapter = new GuideAdapter(dataList, this);
         guideRv = findViewById(R.id.guide_rv);
