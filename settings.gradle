@@ -1,2 +1,3 @@
+include ':handlerdemo'
 include ':app', ':customviewlib', ':draggertest', ':musicdemo', ':gpsdemo', ':mediacodectest', ':threaddemo', ':datastructuresandalgorithms', ':animationdemo'
 rootProject.name='UItest'

@@ -3,7 +3,9 @@ package com.example.customview;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.RectF;
 import android.graphics.Region;
 import android.text.TextPaint;
 import android.util.AttributeSet;
@@ -28,30 +30,37 @@ public class CanvasView extends View {
     public CanvasView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
-private String TAG = CanvasView.class.getSimpleName();
+
+    private String TAG = CanvasView.class.getSimpleName();
+
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         int width = getMeasuredWidth();
         int height = getMeasuredHeight();
-        Log.d(TAG,"width:"+width+" height:"+height);
+        Log.d(TAG, "width:" + width + " height:" + height);
 
         Paint paint = new Paint();
         paint.setColor(Color.LTGRAY);
 
-        TextPaint textPaint=new TextPaint();
+        TextPaint textPaint = new TextPaint();
         textPaint.setColor(Color.WHITE);
         textPaint.setTextSize(24);
-
-        canvas.drawRect(0, 0, width, height, paint);
-
+        canvas.drawColor(Color.BLUE);
+        RectF outer = new RectF(500, 500, 700, 700);
+        RectF inner = new RectF(550, 550, 650, 650);
+        //  canvas.drawRoundRect(0,0,width,height,50,100,paint);
+        //canvas.drawCircle(width/2,height/2,100,paint);
+        //canvas.drawRect(0, 0, width, height, paint);
+        //canvas.drawDoubleRoundRect(outer,50f,100f,inner,50f,100f,paint);
+        Matrix matrix;
         paint.setStyle(Paint.Style.STROKE);
         paint.setColor(Color.RED);
-        canvas.drawRect(50, 50, 300, 300,paint);
+        canvas.drawRect(50, 50, 300, 300, paint);
         paint.setColor(Color.CYAN);
-        canvas.drawRect(250, 250, 500, 500,paint);
+        canvas.drawRect(250, 250, 500, 500, paint);
         paint.setColor(Color.BLACK);
-        canvas.drawRect(50, 50, 500, 500,paint);
+        canvas.drawRect(50, 50, 500, 500, paint);
 
         //========================  default & INTERSECT  ==========================
         canvas.save();
@@ -61,7 +70,7 @@ private String TAG = CanvasView.class.getSimpleName();
         canvas.drawColor(Color.YELLOW);
         canvas.restore();
 
-        canvas.drawText("default & INTERSECT",700,550,textPaint);
+        canvas.drawText("default & INTERSECT", 700, 550, textPaint);
 
         //========================  DIFFERENCE  ==========================
         canvas.save();
@@ -71,7 +80,7 @@ private String TAG = CanvasView.class.getSimpleName();
         canvas.drawColor(Color.YELLOW);
         canvas.restore();
 
-        canvas.drawText("DIFFERENCE",200,1150,textPaint);
+        canvas.drawText("DIFFERENCE", 200, 1150, textPaint);
 
         //========================  REVERSE_DIFFERENCE  ==========================
    /*     canvas.save();
