@@ -1,5 +1,6 @@
 package com.example.uitest;
 
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -10,10 +11,13 @@ import android.text.Spanned;
 import android.text.method.ArrowKeyMovementMethod;
 import android.text.style.BulletSpan;
 import android.text.style.ImageSpan;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -29,7 +33,7 @@ import java.util.List;
  * Created By leiyao6 on
  */
 public class GuideActivity extends AppCompatActivity {
-
+   private String TAG = GuideActivity.class.getSimpleName();
     private RecyclerView guideRv;
 
     @Override
@@ -37,8 +41,14 @@ public class GuideActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.guide_view);
         initGuideRv();
+        initDialog();
+        Log.d(TAG,"onCreate()");
     }
 
+    private void initDialog(){
+        AlertDialog alertDialog =new AlertDialog.Builder(this)
+                .setTitle("测试").create();
+    }
     private void initGuideRv() {
         List<GuideBean> dataList = new ArrayList<>();
         GuideBean guideBean = new GuideBean();
@@ -61,5 +71,37 @@ public class GuideActivity extends AppCompatActivity {
         guideRv = findViewById(R.id.guide_rv);
         guideRv.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
         guideRv.setAdapter(guideAdapter);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(TAG,"onStart()");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d(TAG,"onRestart()");
+    }
+
+
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(TAG,"onStop()");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG,"onDestroy()");
+    }
+
+    @Override
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        Log.d(TAG,"onConfigurationChanged()");
     }
 }
