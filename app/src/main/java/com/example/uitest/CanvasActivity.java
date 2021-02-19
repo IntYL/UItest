@@ -11,6 +11,9 @@ public class CanvasActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.canvas_test);
     }
+
+
+    public native String getStringFormJNI();
 }
 /**
  * Created By leiyao6 on

@@ -1,3 +1,4 @@
+include ':jniLib'
 include ':niodemo'
 include ':handlerdemo'
 include ':app', ':customviewlib', ':draggertest', ':musicdemo', ':gpsdemo', ':mediacodectest', ':threaddemo', ':datastructuresandalgorithms', ':animationdemo'

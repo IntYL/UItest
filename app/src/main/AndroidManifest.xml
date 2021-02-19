@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.uitest">
-<uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.uitest.GuideActivity"
+        <activity
+            android:name="com.example.uitest.GuideActivity"
             android:configChanges="keyboard|orientation|keyboardHidden|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,10 +23,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.example.animationdemo.CircleRevealActivity">
-        </activity>
-        <activity android:name=".CanvasActivity"/>
-        <activity android:name=".ScreenCaptureActivity"/>
+        <activity android:name="com.example.animationdemo.CircleRevealActivity"></activity>
+        <activity android:name=".CanvasActivity" />
+        <activity android:name=".ScreenCaptureActivity" />
     </application>
 
 </manifest>

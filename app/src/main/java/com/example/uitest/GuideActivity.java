@@ -24,6 +24,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.guide.AnimationGuideBean;
 import com.example.guide.CanvasGuideBean;
+import com.example.guide.JNIGuideBean;
 import com.example.guide.ScreenGuideBean;
 
 import java.util.ArrayList;
@@ -66,6 +67,10 @@ public class GuideActivity extends AppCompatActivity {
         ScreenGuideBean screenGuideBean = new ScreenGuideBean();
         screenGuideBean.setName("录屏");
         dataList.add(screenGuideBean);
+
+        JNIGuideBean jniGuideBean = new JNIGuideBean();
+        jniGuideBean.setName("JNI");
+        dataList.add(jniGuideBean);
 
         GuideAdapter guideAdapter = new GuideAdapter(dataList, this);
         guideRv = findViewById(R.id.guide_rv);
