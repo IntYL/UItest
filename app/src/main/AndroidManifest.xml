@@ -14,7 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.example.uitest.GuideActivity"
+            android:name=".TouchEventActivity"
+            android:label="@string/title_activity_touch_event"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".GuideActivity"
             android:configChanges="keyboard|orientation|keyboardHidden|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,8 +26,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name="com.example.animationdemo.CircleRevealActivity"></activity>
+        <activity android:name="com.example.animationdemo.CircleRevealActivity" />
         <activity android:name=".CanvasActivity" />
         <activity android:name=".ScreenCaptureActivity" />
     </application>
