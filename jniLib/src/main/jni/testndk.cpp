@@ -7,8 +7,9 @@
 
 extern "C" JNIEXPORT jstring JNICALL
 Java_com_example_HelloC_helloFromC(
-        JNIEnv* env,
-jclass /* this */) {
-std::string hello = "Hello from C++";
-return env->NewStringUTF(hello.c_str());
+        JNIEnv *env,
+        jclass /* this */) {
+    std::string hello = "Hello from C++";
+
+    return env->NewStringUTF(hello.c_str());
 }
