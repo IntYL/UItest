@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- android:dither="false|true"             //将在位图的像素配置与屏幕不同时（例如：ARGB 8888 位图和 RGB 565 屏幕）启用位图的抖动；值为“false”时则停用抖动。默认值为 true。
+    android:shape="rectangle|line|oval|ring"//分别为矩形、线、椭圆、环。默认为矩形rectangle
+    android:innerRadius="integer"           // shape为ring时可用，内环半径
+    android:innerRadiusRatio="float"        // shape为ring时可用，内环的厚度比，即环的宽度比表示内环半径，默认为3，可被innerRadius值覆盖
+    android:thickness="integer"             // shape为ring时可用，环的厚度
+    android:thicknessRatio="float"          // shape为ring时可用，环的厚度比，即环的宽度比表示环的厚度，默认为9，可被thickness值覆盖
+    android:tint="color"                    // 给shape着色
+    android:tintMode="src_in|src_atop|src_over|add|multiply|screen" // 着色类型
+    android:useLevel="false|true"           // 较少用，一般设为false，否则图形不显示。为true时可在LevelListDrawable使用
+    android:visible="false|true"
+-->
+    <item >
+        <shape xmlns:android="http://schemas.android.com/apk/res/android"
+            android:innerRadiusRatio="3"
+            android:shape="ring"
+            android:thicknessRatio="9"
+            android:useLevel="false">
+            <stroke android:width="5dp"
+                android:dashWidth="8dp"
+                android:dashGap="5dp"/>
+
+            <gradient
+                android:centerColor="#ff0000"
+                android:endColor="#0ff676"
+                android:angle="180"
+                android:startColor="#B23AEE"
+                android:useLevel="false" />
+        </shape>
+
+    </item>
+
+
+</layer-list>
