@@ -1,5 +1,7 @@
 package com.example.uitest;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -14,17 +16,21 @@ import android.text.style.ImageSpan;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.guide.AnimationGuideBean;
+import com.example.guide.CameraGuide;
 import com.example.guide.CanvasGuideBean;
 import com.example.guide.ClickGuideBean;
+import com.example.guide.FileGuideNean;
 import com.example.guide.JNIGuideBean;
 import com.example.guide.ScreenGuideBean;
 
@@ -77,10 +83,19 @@ public class GuideActivity extends AppCompatActivity {
         clickGuideBean.setName("ClickDemo");
         dataList.add(clickGuideBean);
 
+        CameraGuide cameraGuide = new CameraGuide();
+        cameraGuide.setName("相机");
+        dataList.add(cameraGuide);
+
+        FileGuideNean fileGuideNean = new FileGuideNean();
+        fileGuideNean.setName("文件系统");
+        dataList.add(fileGuideNean);
+
         GuideAdapter guideAdapter = new GuideAdapter(dataList, this);
         guideRv = findViewById(R.id.guide_rv);
         guideRv.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
         guideRv.setAdapter(guideAdapter);
+        requestPermission();
     }
 
     @Override
@@ -95,8 +110,42 @@ public class GuideActivity extends AppCompatActivity {
         Log.d(TAG,"onRestart()");
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 101) {
+            int size = grantResults.length;
+            for (int i = 0; i < size; i++) {
+                if (grantResults[i] != PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(this, "授权未通过", Toast.LENGTH_LONG).show();
+                    return;
+                }
+            }
 
+        }
+    }
+    private void requestPermission() {
+        List<String> permissionList = new ArrayList<>();
+        int result = ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (result != PackageManager.PERMISSION_GRANTED) {
+            permissionList.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        }
 
+        int result1 = ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
+        if (result1 != PackageManager.PERMISSION_GRANTED) {
+            permissionList.add(Manifest.permission.CAMERA);
+        }
+
+        int result2 = ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
+        if (result2 != PackageManager.PERMISSION_GRANTED) {
+            permissionList.add(Manifest.permission.READ_EXTERNAL_STORAGE);
+        }
+        if (permissionList.size() > 0) {
+            Log.d(TAG, "request permission");
+            String[] a = new String[]{};
+            ActivityCompat.requestPermissions(this, permissionList.toArray(a), 101);
+        }
+    }
     @Override
     protected void onStop() {
         super.onStop();
